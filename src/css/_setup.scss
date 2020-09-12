@@ -1,0 +1,57 @@
+.setup {
+  width: 600px;
+  margin: auto;
+
+  h1, h2 {
+    text-align: center;
+  }
+
+  button {
+    border: none;
+    border-radius: 5px;
+    background-color: gray;
+    color: white;
+    display: block;
+    margin: auto;
+    margin-top: 20px;
+    padding: 5px 15px;
+  }
+
+  .settings {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .setting {
+    display: flex;
+    padding-top: 10px;
+  }
+
+  .label {
+    padding-right: 20px;
+    min-width: 200px;
+    margin: auto;
+  }
+
+  .value-and-error {
+    flex: 1;
+
+    .value {
+      margin: auto;
+
+      input {
+        width: 100%;
+        border: 1px solid black;
+      }
+    }
+  }
+
+  .error {
+    color: red;
+    margin-top: 3px;
+  }
+
+  .has-error .value {
+    outline: 3px solid red;
+  }
+}

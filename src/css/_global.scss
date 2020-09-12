@@ -1,0 +1,18 @@
+.app {
+  //TODO: find out how to make it look alike across browsers
+  // maybe bundle my own font?
+  font-size: 12px;
+  font-family: sans-serif;
+
+  input {
+    border: none;
+    // prevent the focused element from being highlighted
+    outline: none;
+  }
+}
+
+.preload-images {
+  img {
+    display: none;
+  }
+}

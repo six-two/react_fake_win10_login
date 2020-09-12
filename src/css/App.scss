@@ -1,0 +1,22 @@
+$bar-height: 27px;
+$bar-bg: #283449;
+$blue: #2777ff;
+$login-buttons-bg: #23252e;
+
+@import "global";
+@import "layout";
+@import "setup";
+
+.screen-off {
+  background-color: black;
+  cursor: none;
+}
+
+.screen-manager {
+  // This is sometimes visible (flashes), when a background image is loading
+  background-color: black;
+}
+
+.screen-cover {
+  background-color: white;
+}
