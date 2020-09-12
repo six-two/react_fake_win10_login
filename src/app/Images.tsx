@@ -1,16 +1,14 @@
 import React from 'react';
 
-// import iconRebootDialog from '../img/dialogs/reboot-w.png';
-// import iconShutdownDialog from '../img/dialogs/shutdown-w.png';
+import imageBackground from '../img/background.jpg';
 
-// export { iconRebootDialog, iconShutdownDialog };
-
+export {imageBackground};
 
 function isNotInlineImage(src: string) {
   return !src.startsWith("data:image");
 }
 
-const NOT_INLINED_IMAGES = [/*iconRebootDialog, iconShutdownDialog*/].filter(isNotInlineImage);
+const NOT_INLINED_IMAGES = [imageBackground].filter(isNotInlineImage);
 
 
 function renderImage(src: string) {
