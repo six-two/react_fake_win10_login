@@ -2,10 +2,6 @@ import React from 'react';
 import * as C from '../redux/constants';
 import Dropdown from '../Dropdown';
 
-const INITIAL_SCREEN_MAP = new Map<string, string>();
-INITIAL_SCREEN_MAP.set(C.SCREEN_LOGIN, "Login");
-INITIAL_SCREEN_MAP.set(C.SCREEN_GRUB, "Grub");
-
 export interface RenderInputProps {
   value: string,
   setValue: (value: string) => void,
@@ -35,9 +31,6 @@ export function renderInput(type: string, defaultValue: string,
       return <input value={value} onChange={onChangeCallback}
         placeholder={defaultValue} />
     }
-    case C.TYPE_INITIAL_SCREEN: {
-      return <Dropdown value={value} onValueChange={onValueChange} optionMap={INITIAL_SCREEN_MAP} />;
-    }
     default:
       console.error(`Unknown type: "${type}"`)
       return <div>ERROR: Unknown input type</div>;
@@ -59,12 +52,6 @@ export function checkInput(type: string, value: string): string | null {
         return null;
       }
       return checkTimingStringForErrors(value);
-    }
-    case C.TYPE_INITIAL_SCREEN: {
-      if (!INITIAL_SCREEN_MAP.has(value)) {
-        return `Not a valid initial screen: "${value}"`;
-      }
-      return null;
     }
     case C.TYPE_TEMPLATE_URL_PASS:
     case C.TYPE_TEMPLATE_URL_USER_PASS: {

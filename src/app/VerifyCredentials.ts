@@ -29,29 +29,6 @@ export async function isLoginValid(state: ReduxState) {
   return validUsername && validPassword;
 }
 
-export async function isDecryptPasswordValid(state: ReduxState) {
-  let password = state.var.decrypt.password;
-  let url = state.const.checkDecryptionPasswordUrl;
-  let timeout = state.const.serverRequestTimeout;
-
-  if (url !== null) {
-    // query the url to check password
-    let serverResponse = await resolveWithTimeout(
-      checkCredentialsViaServer(url, null, password), timeout);
-    if (serverResponse !== null) {
-      // got a valid server response
-      return serverResponse;
-    }
-  } else {
-    // simulete the check time by just waiting a bit
-    await sleep(SLEEP_TIME);
-  }
-  // use regex to check validity
-  let validPassword = Boolean(password.match(state.const.validDecryptionPasswordRegex));
-  console.log(`Comparing decrypt password to regex. Match: ${validPassword}`);
-  return validPassword;
-}
-
 async function resolveWithTimeout(promise: Promise<boolean | null>, timeoutSeconds?: number) {
   try {
     if (timeoutSeconds && timeoutSeconds > 0) {

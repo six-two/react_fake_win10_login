@@ -4,8 +4,6 @@ import {
   ReduxState, ReduxVariables, ReduxConstants, FALLBACK_STATE, DEFAULT_VARIABLES
 } from './store';
 import loginReducer from './reducers/login';
-import grubReducer from './reducers/grub';
-import decryptReducer from './reducers/decrypt';
 
 export function reducer(state: ReduxState | undefined, action: Actions.Action): ReduxState {
   if (!state) {
@@ -67,8 +65,6 @@ export function reducer(state: ReduxState | undefined, action: Actions.Action): 
 
 function varReducer(state: ReduxVariables, action: Actions.Action, constants: ReduxConstants): ReduxVariables {
   state = loginReducer(state, action);
-  state = grubReducer(state, action);
-  state = decryptReducer(state, action);
   state = miscReducer(state, action, constants);
   return state;
 }
@@ -87,18 +83,6 @@ function miscReducer(state: ReduxVariables, action: Actions.Action, constants: R
 }
 
 export function setScreen(newScreen: string, state: ReduxVariables, constants: ReduxConstants): ReduxVariables {
-  // skip password if no crypt device exists
-  if (newScreen === C.SCREEN_PLYMOUTH_PASSWORD && !constants.cryptDevice) {
-    newScreen = C.SCREEN_PLYMOUTH_BOOT;
-  }
-
-  // Handle reboots
-  let rebootAfterShutdown = false;
-  if (newScreen === C.SCREEN_REBOOT) {
-    rebootAfterShutdown = true;
-    newScreen = C.SCREEN_SHUTDOWN;
-  }
-
   // Handle suspend and cover
   let needsPreviousScreen = newScreen === C.SCREEN_SUSPEND || newScreen === C.SCREEN_COVER;
   let previousScreen = needsPreviousScreen ? state.screen.name : null;
@@ -109,7 +93,6 @@ export function setScreen(newScreen: string, state: ReduxVariables, constants: R
       name: newScreen,
       changeTime: new Date(),
     },
-    rebootAfterShutdown: rebootAfterShutdown,
     previousScreen: previousScreen,
   };
 }

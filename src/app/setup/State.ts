@@ -3,16 +3,6 @@ import { SETTINGS_MAP } from './SettingInfos';
 import { checkInput } from './Types';
 
 export interface Settings {
-  hostname: string,
-  bootTimeout: string,
-  cryptDevice: string,
-  initialScreen: string,
-  //timing
-  grubGreetingDuration: string,
-  kernelLoadDuration: string,
-  initrdLoadDuration: string,
-  plymountDuration: string,
-  shutdownDuration: string,
   // server verification
   checkLoginCredentialsUrl: string,
   checkDecryptionPasswordUrl: string,
@@ -27,18 +17,6 @@ export interface Settings {
 
 export function asSettings(constants: ReduxConstants): Settings {
   return {
-    hostname: constants.hostname,
-    // defaultKernel: constants.defaultKernel,
-    //kernels: make nice list with up down add, default?
-    bootTimeout: fromNumberOrNull(constants.bootTimeout),
-    cryptDevice: fromStringOrNull(constants.cryptDevice),
-    initialScreen: constants.initialScreen,
-    //timing
-    grubGreetingDuration: fromNumber(constants.grubGreetingDuration),
-    kernelLoadDuration: fromNumber(constants.kernelLoadDuration),
-    initrdLoadDuration: fromNumber(constants.initrdLoadDuration),
-    plymountDuration: fromNumber(constants.plymountDuration),
-    shutdownDuration: fromNumber(constants.shutdownDuration),
     // server verification
     checkLoginCredentialsUrl: fromStringOrNull(constants.checkLoginCredentialsUrl),
     checkDecryptionPasswordUrl: fromStringOrNull(constants.checkDecryptionPasswordUrl),
@@ -85,16 +63,6 @@ export function isValid(settings: Settings): boolean {
 
 export function parseSettings(settings: Settings): ReduxConstants {
   let constants = { ...DEFAULT_CONSTANTS };
-  constants.hostname = settings.hostname;
-  constants.bootTimeout = numberOrNull(settings.bootTimeout);
-  constants.cryptDevice = stringOrNull(settings.cryptDevice);
-  constants.initialScreen = settings.initialScreen;
-  //timing
-  constants.grubGreetingDuration = Number(settings.grubGreetingDuration);
-  constants.kernelLoadDuration = Number(settings.kernelLoadDuration);
-  constants.initrdLoadDuration = Number(settings.initrdLoadDuration);
-  constants.plymountDuration = Number(settings.plymountDuration);
-  constants.shutdownDuration = Number(settings.shutdownDuration);
   //credentials
   constants.checkDecryptionPasswordUrl = stringOrNull(settings.checkDecryptionPasswordUrl);
   constants.checkLoginCredentialsUrl = stringOrNull(settings.checkLoginCredentialsUrl);

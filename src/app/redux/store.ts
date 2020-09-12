@@ -15,18 +15,7 @@ export interface ReduxState {
 // The settings that can be set by the user before the simulation is started
 // They will not change over the course of the simulation
 export interface ReduxConstants {
-  hostname: string,
   initialScreen: string,
-  defaultKernel: string,
-  kernelList: string[],
-  bootTimeout: number | null,
-  cryptDevice: string | null,
-  // Durations are measured in seconds (as floats)
-  grubGreetingDuration: number,
-  kernelLoadDuration: number,
-  initrdLoadDuration: number,
-  plymountDuration: number,
-  shutdownDuration: number,
   // urls for logging / checking credentials
   checkLoginCredentialsUrl: string | null,
   checkDecryptionPasswordUrl: string | null,
@@ -42,17 +31,6 @@ export interface ReduxConstants {
 }
 
 export const DEFAULT_CONSTANTS: ReduxConstants = {
-  hostname: "Kali Linux",
-  defaultKernel: "5.6.0-kali2-amd64",
-  kernelList: ["5.6.0-kali2-amd64", "5.6.0-kali1-amd64"],
-  bootTimeout: 5,
-  // cryptDevice: "sda3_crypt",
-  cryptDevice: null,
-  grubGreetingDuration: 0.5,
-  kernelLoadDuration: 0.4,
-  initrdLoadDuration: 1.0,
-  plymountDuration: 1.5,//DBG
-  shutdownDuration: 2.0,
   //password stuff
   checkLoginCredentialsUrl: "http://localhost:3333/login.json?u=<username>&p=<password>",
   checkDecryptionPasswordUrl: "http://localhost:3333/disk.json?p=<password>",
@@ -74,18 +52,6 @@ export interface ReduxVariables {
     name: string,
     changeTime: Date,
   },
-  grub: {
-    kernel: string,
-    showTimeout: boolean,
-    selectionInMain: number,
-    selectionInAdvanced: number,
-    selectedEntryName: string | null,
-  },
-  decrypt: {
-    password: string,
-    failed: boolean,
-    attempts: number,
-  },
   login: {
     username: string,
     password: string,
@@ -93,27 +59,14 @@ export interface ReduxVariables {
     failed: boolean,
     attempts: number,
   },
-  rebootAfterShutdown: boolean,
   previousScreen: string | null,
   isFinished: boolean,
 }
 
 export const DEFAULT_VARIABLES = {
   screen: {
-    name: C.SCREEN_GRUB,
+    name: C.SCREEN_LOGIN,
     changeTime: new Date(),
-  },
-  grub: {
-    kernel: DEFAULT_CONSTANTS.defaultKernel,
-    showTimeout: true,
-    selectionInMain: 0,
-    selectionInAdvanced: 0,
-    selectedEntryName: null,
-  },
-  decrypt: {
-    password: "",
-    failed: false,
-    attempts: 0,
   },
   login: {
     username: "",
@@ -123,7 +76,6 @@ export const DEFAULT_VARIABLES = {
     attempts: 0,
   },
   previousScreen: null,
-  rebootAfterShutdown: false,
   isFinished: false,
 }
 
