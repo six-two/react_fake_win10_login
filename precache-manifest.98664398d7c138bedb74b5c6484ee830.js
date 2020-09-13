@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "cdf7e8383cb54e9c00e161ebae1c5da3",
+    "revision": "518ad2846ba3e01b5979e11579a657f8",
     "url": "/react_fake_win10_login/index.html"
   },
   {
-    "revision": "0917cbd244f34433a3d5",
-    "url": "/react_fake_win10_login/static/css/main.bc896c0b.chunk.css"
+    "revision": "a62e44cfd2de108a2d54",
+    "url": "/react_fake_win10_login/static/css/main.0fc99487.chunk.css"
   },
   {
-    "revision": "476289bb46ac560cdb3e",
-    "url": "/react_fake_win10_login/static/js/2.04561914.chunk.js"
+    "revision": "e9d10397ed34abef5eba",
+    "url": "/react_fake_win10_login/static/js/2.4a62ed3f.chunk.js"
   },
   {
     "revision": "c64c486544348f10a6d6c716950bc223",
-    "url": "/react_fake_win10_login/static/js/2.04561914.chunk.js.LICENSE.txt"
+    "url": "/react_fake_win10_login/static/js/2.4a62ed3f.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "0917cbd244f34433a3d5",
-    "url": "/react_fake_win10_login/static/js/main.3eecf183.chunk.js"
+    "revision": "a62e44cfd2de108a2d54",
+    "url": "/react_fake_win10_login/static/js/main.2632feb2.chunk.js"
   },
   {
     "revision": "a3e8f8fe504020579488",
