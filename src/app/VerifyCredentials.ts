@@ -5,7 +5,7 @@ import * as C from './redux/constants';
 const SLEEP_TIME = 1000;
 
 export async function isLoginValid(state: ReduxState) {
-  let username = state.var.login.username;
+  let username = state.var.login.selectedUser.name;
   let password = state.var.login.password;
   let url = state.const.checkLoginCredentialsUrl;
   let timeout = state.const.serverRequestTimeout;

@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { ReduxState, ReduxConstants } from './redux/store';
+import { ReduxState, ReduxConstants, DEFAULT_CONSTANTS } from './redux/store';
 import * as C from './redux/constants';
+import {initialSetup, } from './redux/actions';
 import FullscreenManager from './FullscreenManager';
 import ScreenManager from './win10/ScreenManager';
 import ScreenCover from './ScreenCover';
@@ -18,6 +19,7 @@ class App extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {};
+    (this as any).debugIsInitialized = false;
   }
 
   render() {
@@ -31,6 +33,10 @@ class App extends React.Component<Props, State> {
 
   renderContent() {
     if (C.DEBUG){
+      if (!(this as any).debugIsInitialized){
+        (this as any).debugIsInitialized = true;
+        initialSetup(DEFAULT_CONSTANTS);
+      }
       return <ScreenManager />
     } else {
       if (this.props.showSetup) {

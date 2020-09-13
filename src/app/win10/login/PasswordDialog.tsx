@@ -1,10 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import KeyboardEventHandler from 'react-keyboard-event-handler';
-import { ReduxState } from '../../redux/store';
+import { ReduxState, SelectedUser } from '../../redux/store';
 import { setLoginPassword, tryLogin, setScreen, setRevealPassword } from '../../redux/actions';
 import * as C from '../../redux/constants';
-import { iconUser } from '../../Images';
 import { isLoginValid } from '../../VerifyCredentials';
 
 
@@ -16,14 +15,18 @@ const LoginDialog = (props: Props) => {
         isLoginValid(props.reduxState).then(isValid => tryLogin(isValid));
     };
     const showPassword = (e: any) => setRevealPassword(true);
-    const hidePassword = (e: any) => setRevealPassword(false);
+    const hidePassword = (e: any) => {
+        if (props.revealPassword) {
+            setRevealPassword(false);
+        }
+    };
 
     return <div className="password-dialog">
         <div className="user-icon">
-            <img src={iconUser} alt=""></img>
+            <img src={props.user.iconUrl} alt=""></img>
         </div>
         <div className="user-name">
-            <span>TODO: User</span>
+            <span>{props.user.name}</span>
         </div>
         <KeyboardEventHandler
             handleKeys={["enter"]}
@@ -60,6 +63,7 @@ const LoginDialog = (props: Props) => {
 }
 
 interface Props {
+    user: SelectedUser,
     revealPassword: boolean,
     password: string,
     failedLogin: boolean,
@@ -69,6 +73,7 @@ interface Props {
 const mapStateToProps = (state: ReduxState, ownProps: any) => {
     return {
         ...ownProps,
+        user: state.var.login.selectedUser,
         revealPassword: state.var.login.revealPassword,
         password: state.var.login.password,
         failedLogin: state.var.login.failed,

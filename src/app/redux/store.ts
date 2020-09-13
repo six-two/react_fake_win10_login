@@ -12,9 +12,16 @@ export interface ReduxState {
   },
 }
 
+export interface UserInfo {
+  // TODO highlight-color?
+  name: string,
+  iconUrl: string,
+}
+
 // The settings that can be set by the user before the simulation is started
 // They will not change over the course of the simulation
 export interface ReduxConstants {
+  users: UserInfo[],
   initialScreen: string,
   // urls for logging / checking credentials
   checkLoginCredentialsUrl: string | null,
@@ -31,6 +38,7 @@ export interface ReduxConstants {
 }
 
 export const DEFAULT_CONSTANTS: ReduxConstants = {
+  users: [{name: 'Test 123', iconUrl: 'https://i.ytimg.com/vi/B9gjMJ4rTJw/maxresdefault.jpg'}, {name: 'User', iconUrl: ''}],
   //password stuff
   checkLoginCredentialsUrl: "http://localhost:3333/login.json?u=<username>&p=<password>",
   checkDecryptionPasswordUrl: "http://localhost:3333/disk.json?p=<password>",
@@ -38,11 +46,17 @@ export const DEFAULT_CONSTANTS: ReduxConstants = {
   validLoginPasswordRegex: RegExp("^.+$"),
   validDecryptionPasswordRegex: RegExp("^$"),//empty string
   serverRequestTimeout: 2.0,
-  initialScreen: C.SCREEN_LOGIN,
+  initialScreen: C.SCREEN_LOCKED,
   //cover
   coverUrl: "https://www.google.com/webhp?igu=1",
   coverFakeUrl: "/www.google.com",
   coverFakeTitle: "Google",
+}
+
+export interface SelectedUser {
+  index: number,
+  name: string,
+  iconUrl: string,
 }
 
 // The variables or "state" of the simulation.
@@ -53,8 +67,8 @@ export interface ReduxVariables {
     changeTime: Date,
   },
   login: {
+    selectedUser: SelectedUser,
     revealPassword: boolean,
-    username: string,
     password: string,
     openMenu: string | null,
     failed: boolean,
@@ -64,14 +78,18 @@ export interface ReduxVariables {
   isFinished: boolean,
 }
 
-export const DEFAULT_VARIABLES = {
+export const DEFAULT_VARIABLES: ReduxVariables = {
   screen: {
     name: C.SCREEN_LOCKED,
     changeTime: new Date(),
   },
   login: {
+    selectedUser: {
+      index: 0,
+      name: "",
+      iconUrl: "",
+    },
     revealPassword: false,
-    username: "",
     password: "",
     openMenu: null,
     failed: false,

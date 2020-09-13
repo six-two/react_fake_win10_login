@@ -5,13 +5,17 @@ import { ReduxVariables } from '../store';
 
 export default function reducer(state: ReduxVariables, action: Actions.Action): ReduxVariables {
   switch (action.type) {
-    case C.SET_LOGIN_USERNAME: {
-      let payload = action.payload as string;
+    case C.SELECT_USER: {
+      let payload = action.payload as number;
       return {
         ...state,
         login: {
           ...state.login,
-          username: payload,
+          selectedUser: {
+            ...state.login.selectedUser,
+            index: payload,
+            // The rest gets updated afterwards
+          },
         },
       };
     }

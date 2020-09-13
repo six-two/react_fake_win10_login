@@ -26,10 +26,10 @@ export function setIsFullscreenActive(newValue: boolean) {
   });
 }
 
-export function setLoginUsername(newValue: string) {
+export function selectUser(newIndex: number) {
   d({
-    type: C.SET_LOGIN_USERNAME,
-    payload: newValue,
+    type: C.SELECT_USER,
+    payload: newIndex,
   });
 }
 

@@ -1,15 +1,15 @@
 import React from 'react';
 
 import imageBackground from '../img/background.jpg';
-import iconUser from '../img/user.png';
+import defaultUserIcon from '../img/user.png';
 
-export {imageBackground, iconUser};
+export {imageBackground, defaultUserIcon};
 
 function isNotInlineImage(src: string) {
   return !src.startsWith("data:image");
 }
 
-const NOT_INLINED_IMAGES = [imageBackground, iconUser].filter(isNotInlineImage);
+const NOT_INLINED_IMAGES = [imageBackground, defaultUserIcon].filter(isNotInlineImage);
 
 
 function renderImage(src: string) {

@@ -4,6 +4,7 @@ import {
   ReduxState, ReduxVariables, ReduxConstants, FALLBACK_STATE, DEFAULT_VARIABLES
 } from './store';
 import loginReducer from './reducers/login';
+import {defaultUserIcon} from '../Images';
 
 export function reducer(state: ReduxState | undefined, action: Actions.Action): ReduxState {
   if (!state) {
@@ -16,13 +17,14 @@ export function reducer(state: ReduxState | undefined, action: Actions.Action): 
     case C.INITIAL_SETUP: {
       let constants = action.payload as ReduxConstants;
       let vars = setScreen(constants.initialScreen, DEFAULT_VARIABLES, constants);
+      vars = updateSelectedUser(constants, vars);
       return {
         const: constants,
         var: vars,
         isSetupDone: true,
         fullscreen: {
           ...state.fullscreen,
-          requested: true,
+          requested: !C.DEBUG,
         },
       };
     }
@@ -73,13 +75,35 @@ function miscReducer(state: ReduxVariables, action: Actions.Action, constants: R
   switch (action.type) {
     case C.SET_SCREEN: {
       let newScreen = action.payload as string;
-      return setScreen(newScreen, state, constants);
+      state = setScreen(newScreen, state, constants);
+      break;
     }
     case C.RESET_STATE: {
-      return setScreen(DEFAULT_VARIABLES.screen.name, DEFAULT_VARIABLES, constants);
+      state = setScreen(DEFAULT_VARIABLES.screen.name, DEFAULT_VARIABLES, constants);
+      break;
+    }
+    case C.SELECT_USER: {
+      state = updateSelectedUser(constants, state);
     }
   }
   return state;
+}
+
+function updateSelectedUser(constants: ReduxConstants, state: ReduxVariables): ReduxVariables {
+  const index = state.login.selectedUser.index;
+  const user = constants.users[index];
+  const iconUrl = user.iconUrl ? user.iconUrl : defaultUserIcon;
+  return {
+    ...state,
+    login: {
+      ...state.login,
+      selectedUser: {
+        index: index,
+        name: user.name,
+        iconUrl: iconUrl,
+      },
+    },
+  }
 }
 
 export function setScreen(newScreen: string, state: ReduxVariables, constants: ReduxConstants): ReduxVariables {
