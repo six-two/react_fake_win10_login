@@ -36,9 +36,9 @@ function fromStringOrNull(value: string | null): string {
   return value || "";
 }
 
-function fromNumberOrNull(value: number | null): string {
-  return value ? "" + value : "";
-}
+// function fromNumberOrNull(value: number | null): string {
+//   return value ? "" + value : "";
+// }
 
 function fromRegex(value: RegExp): string {
   return value.source;
@@ -74,9 +74,9 @@ function stringOrNull(value: string): string | null {
   return value ? value : null;
 }
 
-function numberOrNull(value: string): number | null {
-  return value ? Number(value) : null;
-}
+// function numberOrNull(value: string): number | null {
+//   return value ? Number(value) : null;
+// }
 
 export function parseUrl(settings: Settings) {
   // edit a copy

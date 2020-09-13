@@ -1,6 +1,5 @@
 import React from 'react';
 import * as C from '../redux/constants';
-import Dropdown from '../Dropdown';
 
 export interface RenderInputProps {
   value: string,

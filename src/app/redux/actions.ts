@@ -8,13 +8,8 @@ function d(action: Action) {
 
 export interface Action {
   type: string,
-  payload?: string | number | boolean | SetKernelAndBootPayload | ReduxConstants | null,
+  payload?: string | number | boolean | ReduxConstants | null,
 };
-
-export interface SetKernelAndBootPayload {
-  title: string,
-  kernel: string,
-}
 
 // action creators
 export function requestFullscreen(newValue: boolean) {
@@ -52,16 +47,15 @@ export function tryLogin(success: boolean) {
   });
 }
 
-export function setLoginOpenMenu(newValue: string | null) {
+export function toggleRevealPassword() {
   d({
-    type: C.SET_LOGIN_OPEN_MENU,
-    payload: newValue,
+    type: C.TOGGLE_REVEAL_PASSWORD,
   });
 }
 
-export function setHostname(newValue: string) {
+export function setLoginOpenMenu(newValue: string | null) {
   d({
-    type: C.SET_HOSTNAME,
+    type: C.SET_LOGIN_OPEN_MENU,
     payload: newValue,
   });
 }
@@ -70,41 +64,6 @@ export function setScreen(newValue: string) {
   d({
     type: C.SET_SCREEN,
     payload: newValue,
-  });
-}
-
-export function setGrubMainSelectedIndex(newValue: number) {
-  d({
-    type: C.SET_GRUB_MAIN_SELECTED,
-    payload: newValue,
-  });
-}
-
-export function setGrubAdvancedSelectedIndex(newValue: number) {
-  d({
-    type: C.SET_GRUB_ADVANCED_SELECTED,
-    payload: newValue,
-  });
-}
-
-export function setKernelAndBoot(entryName: string, kernelName: string) {
-  d({
-    type: C.SET_KERNEL_AND_BOOT,
-    payload: { title: entryName, kernel: kernelName },
-  });
-}
-
-export function setDecryptPassword(newValue: string) {
-  d({
-    type: C.SET_DECRYPT_PASSWORD,
-    payload: newValue,
-  });
-}
-
-export function tryDecrypt(success: boolean) {
-  d({
-    type: C.TRY_DECRYPT,
-    payload: success,
   });
 }
 

@@ -53,6 +53,7 @@ export interface ReduxVariables {
     changeTime: Date,
   },
   login: {
+    revealPassword: boolean,
     username: string,
     password: string,
     openMenu: string | null,
@@ -65,10 +66,11 @@ export interface ReduxVariables {
 
 export const DEFAULT_VARIABLES = {
   screen: {
-    name: C.SCREEN_LOGIN,
+    name: C.SCREEN_LOCKED,
     changeTime: new Date(),
   },
   login: {
+    revealPassword: false,
     username: "",
     password: "",
     openMenu: null,

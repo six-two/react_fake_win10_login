@@ -5,16 +5,53 @@ import { ReduxVariables } from '../store';
 
 export default function reducer(state: ReduxVariables, action: Actions.Action): ReduxVariables {
   switch (action.type) {
-    // case C.SET_LOGIN_USERNAME: {
-    //   let payload = action.payload as string;
-    //   return {
-    //     ...state,
-    //     login: {
-    //       ...state.login,
-    //       username: payload,
-    //     },
-    //   };
-    // }
+    case C.SET_LOGIN_USERNAME: {
+      let payload = action.payload as string;
+      return {
+        ...state,
+        login: {
+          ...state.login,
+          username: payload,
+        },
+      };
+    }
+    case C.SET_LOGIN_PASSWORD: {
+      let payload = action.payload as string;
+      return {
+        ...state,
+        login: {
+          ...state.login,
+          password: payload,
+        },
+      };
+    }
+    case C.TOGGLE_REVEAL_PASSWORD: {
+      return {
+        ...state,
+        login: {
+          ...state.login,
+          revealPassword: !state.login.revealPassword,
+        },
+      };
+    }
+    case C.TRY_LOGIN: {
+      let success = action.payload as boolean;
+      const copy = {
+        ...state,
+        login: {
+          ...state.login,
+          revealPassword: false,
+          failed: !success,
+          attempts: state.login.attempts + 1,
+        },
+        isFinished: success,
+      };
+      if (!success) {
+        // Clear password
+        copy.login.password = '';
+      }
+      return copy;
+    }
     default:
       return state;
   }

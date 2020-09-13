@@ -12,7 +12,13 @@ class ScreenLogin extends React.Component<Props> {
       <div className="fill-screen v-flex" onClick={this.closeMenu}>
         <div className="expand"></div>
         {this.props.children}
-        <div className="expand"></div>
+        <div className="expand v-flex">
+          <div className="expand"></div>
+          <div className="button-bar">
+            {/* TODO */}
+            Internet, Battery
+          </div>
+        </div>
       </div>
     </div>
   }
@@ -26,6 +32,7 @@ class ScreenLogin extends React.Component<Props> {
 
 interface Props {
   isMenuOpen: boolean,
+  buttons: any[],
 }
 
 const mapStateToProps = (state: ReduxState, ownProps: any) => {

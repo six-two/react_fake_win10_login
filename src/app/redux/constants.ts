@@ -1,4 +1,4 @@
-export const DEBUG = false;
+export const DEBUG = true;
 
 export const MARKER_CAN_BE_LEFT_EMPTY = "*";
 
@@ -10,15 +10,11 @@ export const SET_FULLSCREEN_IS_REQUESTED = "SET_FULLSCREEN_IS_REQUESTED";
 export const SET_FULLSCREEN_IS_ACTIVE = "SET_FULLSCREEN_IS_ACTIVE";
 export const SET_LOGIN_USERNAME = "SET_LOGIN_USERNAME";
 export const SET_LOGIN_PASSWORD = "SET_LOGIN_PASSWORD";
-export const SET_DECRYPT_PASSWORD = "SET_DECRYPT_PASSWORD";
 export const SET_SCREEN = "SET_SCREEN";
 export const SET_HOSTNAME = "SET_HOSTNAME";
 export const SET_LOGIN_OPEN_MENU = "SET_LOGIN_OPEN_MENU";
-export const SET_GRUB_MAIN_SELECTED = "SET_GRUB_MAIN_SELECTED";
-export const SET_GRUB_ADVANCED_SELECTED = "SET_GRUB_ADVANCED_SELECTED";
+export const TOGGLE_REVEAL_PASSWORD = "TOGGLE_REVEAL_PASSWORD";
 export const TRY_LOGIN = "TRY_LOGIN";
-export const TRY_DECRYPT = "TRY_DECRYPT";
-export const SET_KERNEL_AND_BOOT = "SET_KERNEL_AND_BOOT";
 export const RESET_STATE = "RESET_STATE";
 export const INITIAL_SETUP = "INITIAL_SETUP";
 export const SET_SETUP_DONE = "SET_SETUP_DONE";//should only be used for browser history
@@ -27,7 +23,9 @@ export const SET_SETUP_DONE = "SET_SETUP_DONE";//should only be used for browser
 export const SCREEN_OFF = "SCREEN_OFF";
 export const SCREEN_SUSPEND = "SCREEN_SUSPEND";
 // normal screens
+export const SCREEN_LOCKED = "SCREEN_LOCKED";
 export const SCREEN_LOGIN = "SCREEN_LOGIN";
+export const SCREEN_PASSWORD_RESET = "SCREEN_PASSWORD_RESET";
 //
 export const SCREEN_COVER = "SCREEN_COVER";
 
