@@ -25,12 +25,13 @@ export default function reducer(state: ReduxVariables, action: Actions.Action): 
         },
       };
     }
-    case C.TOGGLE_REVEAL_PASSWORD: {
+    case C.SET_REVEAL_PASSWORD: {
+      let payload = action.payload as boolean;
       return {
         ...state,
         login: {
           ...state.login,
-          revealPassword: !state.login.revealPassword,
+          revealPassword: payload,
         },
       };
     }

@@ -47,9 +47,10 @@ export function tryLogin(success: boolean) {
   });
 }
 
-export function toggleRevealPassword() {
+export function setRevealPassword(newValue: boolean) {
   d({
-    type: C.TOGGLE_REVEAL_PASSWORD,
+    type: C.SET_REVEAL_PASSWORD,
+    payload: newValue,
   });
 }
 

@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import KeyboardEventHandler from 'react-keyboard-event-handler';
 import { ReduxState } from '../../redux/store';
-import { setLoginPassword, tryLogin, setScreen, toggleRevealPassword } from '../../redux/actions';
+import { setLoginPassword, tryLogin, setScreen, setRevealPassword } from '../../redux/actions';
 import * as C from '../../redux/constants';
 import { iconUser } from '../../Images';
 import { isLoginValid } from '../../VerifyCredentials';
@@ -10,11 +10,13 @@ import { isLoginValid } from '../../VerifyCredentials';
 
 const LoginDialog = (props: Props) => {
     const type = props.revealPassword ? "text" : "password";
-    const showRevealButton = props.password && !props.revealPassword;
+    const showRevealButton = props.password;
     const onPasswordChange = (e: any) => setLoginPassword(e.target.value);
     const doLogin = (e: any) => {
         isLoginValid(props.reduxState).then(isValid => tryLogin(isValid));
     };
+    const showPassword = (e: any) => setRevealPassword(true);
+    const hidePassword = (e: any) => setRevealPassword(false);
 
     return <div className="password-dialog">
         <div className="user-icon">
@@ -36,7 +38,8 @@ const LoginDialog = (props: Props) => {
                         autoFocus
                         autoComplete="off" />
                     {showRevealButton &&
-                        <div className="button reveal" onClick={toggleRevealPassword}>
+                        <div className="button reveal" onMouseDown={showPassword}
+                            onMouseUp={hidePassword} onMouseLeave={hidePassword}>
                             <span role="img" aria-label="show">👁️</span>
                         </div>
                     }
@@ -66,7 +69,7 @@ interface Props {
 const mapStateToProps = (state: ReduxState, ownProps: any) => {
     return {
         ...ownProps,
-        revealPassword: false,
+        revealPassword: state.var.login.revealPassword,
         password: state.var.login.password,
         failedLogin: state.var.login.failed,
         reduxState: state,
