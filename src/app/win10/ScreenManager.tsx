@@ -5,6 +5,8 @@ import { ReduxState } from '../redux/store';
 import ScreenLogin from './ScreenLogin';
 import LockedScreen from './login/LockedScreen';
 import PasswordDialog from './login/PasswordDialog';
+import TurnedOffScreen from './TurnedOffScreen';
+import ScreenSuspend from './ScreenSuspend';
 
 
 function preventContextMenu(e: React.MouseEvent<HTMLDivElement, MouseEvent>) {
@@ -31,6 +33,10 @@ class ScreenManager extends React.Component<Props> {
         return <ScreenLogin>
           <PasswordDialog />
         </ScreenLogin>
+      case C.SCREEN_OFF:
+        return <TurnedOffScreen />
+      case C.SCREEN_SUSPEND:
+        return <ScreenSuspend />
       default:
         return <h1 style={{ color: "red" }}>
           {`Unknown screen: "${this.props.screen}"`}

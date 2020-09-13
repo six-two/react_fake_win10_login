@@ -1,0 +1,47 @@
+.menu-bar {
+    position: absolute;
+    bottom: 40px;
+    right: 30px;
+    display: table;
+
+    .menu-wrapper {
+        display: table-cell;
+    }
+}
+
+.menu-trigger {
+    user-select: none !important;
+    padding    : 6px 5px;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.menu-trigger-selected {
+}
+
+.menu-trigger-disabled {
+    color: gray;
+}
+
+.menu-popup {
+    color           : white;
+
+    position: fixed;
+    top     : 27px;
+    right   : 0px;
+
+    .menu-item {
+        padding   : 4px 0px 4px 30px;
+        width     : 225px; //TODO make smaller and fix positioning
+        box-sizing: border-box;
+
+        &:hover {
+        }
+    }
+
+    .keybinding {
+        color       : #999;
+        float       : right;
+        margin-right: 7px;
+    }
+}

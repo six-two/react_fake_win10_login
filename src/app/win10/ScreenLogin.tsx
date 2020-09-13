@@ -12,15 +12,7 @@ class ScreenLogin extends React.Component<Props> {
       <div className="fill-screen v-flex" onClick={this.closeMenu}>
         <div className="expand"></div>
         {this.props.children}
-        <div className="expand h-flex">
-          <div className="expand"></div>
-          <div className="button-bar">
-            {/* TODO Locked */}
-            Internet, Battery
-            {/* TODO password */}
-            Keyboard layout, WIFI, Accessibility, Power (Sleep, Shut down, Restart)
-          </div>
-        </div>
+        <div className="expand"></div>
       </div>
     </div>
   }

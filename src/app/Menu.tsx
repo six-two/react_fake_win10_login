@@ -19,7 +19,7 @@ export default class MenuBarItem extends React.Component<Props> {
       : this.props.name;
     let menuDom = <div className="menu-popup">{this.props.children}</div>
 
-    return <div>
+    return <div className="menu-wrapper">
       <div className={classes} onClick={onClick}>
         {triggerDom}
       </div>

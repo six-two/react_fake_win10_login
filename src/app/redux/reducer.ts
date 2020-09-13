@@ -3,7 +3,7 @@ import * as C from './constants';
 import {
   ReduxState, ReduxVariables, ReduxConstants, FALLBACK_STATE, DEFAULT_VARIABLES
 } from './store';
-import loginReducer from './reducers/login';
+import loginReducer, {setLoginPassword} from './reducers/login';
 import {defaultUserIcon} from '../Images';
 
 export function reducer(state: ReduxState | undefined, action: Actions.Action): ReduxState {
@@ -120,6 +120,10 @@ export function setScreen(newScreen: string, state: ReduxVariables, constants: R
   // Handle suspend and cover
   let needsPreviousScreen = newScreen === C.SCREEN_SUSPEND || newScreen === C.SCREEN_COVER;
   let previousScreen = needsPreviousScreen ? state.screen.name : null;
+
+  if (newScreen === C.SCREEN_LOGIN) {
+    state = setLoginPassword(state, "");
+  }
 
   return {
     ...state,

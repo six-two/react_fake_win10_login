@@ -1,6 +1,7 @@
 import React from 'react';
 import KeyboardEventHandler from 'react-keyboard-event-handler';
 import { connect } from 'react-redux';
+import * as C from '../redux/constants';
 import { ReduxState } from '../redux/store';
 import { setScreen } from '../redux/actions';
 
@@ -18,7 +19,7 @@ class ScreenSuspend extends React.Component<Props> {
   wakeUp = () => {
     let timeDiff = new Date().getTime() - this.props.suspendStart.getTime();
     if (timeDiff >= MIN_SUSPEND_TIME) {
-      setScreen(this.props.lastScreen);
+      setScreen(C.SCREEN_LOCKED);
     }
   }
 }

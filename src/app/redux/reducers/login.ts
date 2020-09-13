@@ -21,14 +21,7 @@ export default function reducer(state: ReduxVariables, action: Actions.Action): 
       };
     }
     case C.SET_LOGIN_PASSWORD: {
-      let payload = action.payload as string;
-      return {
-        ...state,
-        login: {
-          ...state.login,
-          password: payload,
-        },
-      };
+      return setLoginPassword(state, action.payload as string);
     }
     case C.SET_REVEAL_PASSWORD: {
       let payload = action.payload as boolean;
@@ -58,7 +51,27 @@ export default function reducer(state: ReduxVariables, action: Actions.Action): 
       }
       return copy;
     }
+    case C.SET_LOGIN_OPEN_MENU: {
+      let payload = action.payload as string | null;
+      return {
+        ...state,
+        login: {
+          ...state.login,
+          openMenu: payload,
+        },
+      };
+    }
     default:
       return state;
   }
+}
+
+export function setLoginPassword(state: ReduxVariables, value: string): ReduxVariables {
+  return {
+    ...state,
+    login: {
+      ...state.login,
+      password: value,
+    },
+  };
 }

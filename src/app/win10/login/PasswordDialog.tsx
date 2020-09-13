@@ -6,6 +6,7 @@ import { setLoginPassword, tryLogin, setScreen, setRevealPassword } from '../../
 import * as C from '../../redux/constants';
 import { isLoginValid } from '../../VerifyCredentials';
 import UserList from './UserList';
+import MenuBar from './Menus';
 
 
 const LoginDialog = (props: Props) => {
@@ -61,6 +62,7 @@ const LoginDialog = (props: Props) => {
             </div>
         }
         <UserList />
+        <MenuBar />
     </div>
 }
 
