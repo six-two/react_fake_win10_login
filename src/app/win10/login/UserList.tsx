@@ -15,6 +15,7 @@ const UserList = (props: Props) => {
                 if (index === props.selectedIndex) {
                     className += " selected";
                 } else {
+                    className += " not-selected";
                     onClick = (e: any) => selectUser(index);
                 }
                 return <div

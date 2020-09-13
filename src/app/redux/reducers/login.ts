@@ -16,6 +16,7 @@ export default function reducer(state: ReduxVariables, action: Actions.Action): 
             index: payload,
             // The rest gets updated afterwards
           },
+          password: '',
         },
       };
     }

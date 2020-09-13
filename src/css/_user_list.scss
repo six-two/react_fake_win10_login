@@ -28,6 +28,11 @@ $icon-size: 60px;
 
         &.selected {
             background-color: rgb(38, 96, 255);
+            cursor: default;
+        }
+
+        &.not-selected {
+            cursor: pointer;
         }
     }
 }
