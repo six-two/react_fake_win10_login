@@ -16,6 +16,17 @@ export function reducer(state: ReduxState | undefined, action: Actions.Action): 
   switch (action.type) {
     case C.INITIAL_SETUP: {
       let constants = action.payload as ReduxConstants;
+      constants = {
+        ...constants,
+        users: constants.users.map(user => {
+          // Replace empty urls with the default version
+          const iconUrl = user.iconUrl ? user.iconUrl : defaultUserIcon;
+          return {
+            ...user,
+            iconUrl,
+          }
+        })
+      }
       let vars = setScreen(constants.initialScreen, DEFAULT_VARIABLES, constants);
       vars = updateSelectedUser(constants, vars);
       return {
@@ -92,7 +103,6 @@ function miscReducer(state: ReduxVariables, action: Actions.Action, constants: R
 function updateSelectedUser(constants: ReduxConstants, state: ReduxVariables): ReduxVariables {
   const index = state.login.selectedUser.index;
   const user = constants.users[index];
-  const iconUrl = user.iconUrl ? user.iconUrl : defaultUserIcon;
   return {
     ...state,
     login: {
@@ -100,7 +110,7 @@ function updateSelectedUser(constants: ReduxConstants, state: ReduxVariables): R
       selectedUser: {
         index: index,
         name: user.name,
-        iconUrl: iconUrl,
+        iconUrl: user.iconUrl,
       },
     },
   }

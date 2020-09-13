@@ -1,0 +1,33 @@
+$icon-size: 60px;
+
+.user-list {
+    display       : table;
+    flex-direction: column;
+    position      : absolute;
+    bottom        : 40px;
+    left          : 30px;
+
+    .entry {
+        display: table-row;
+        
+        .icon {
+            padding: 4px 10px;
+            display: table-cell;
+            width  : $icon-size;
+            height : $icon-size;
+            vertical-align: middle;
+        }
+
+        .name {
+            display       : table-cell;
+            vertical-align: middle;
+            padding-right   : 10px;
+            font-size     : 18px;
+            color         : white;
+        }
+
+        &.selected {
+            background-color: rgb(38, 96, 255);
+        }
+    }
+}

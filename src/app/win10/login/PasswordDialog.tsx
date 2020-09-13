@@ -5,6 +5,7 @@ import { ReduxState, SelectedUser } from '../../redux/store';
 import { setLoginPassword, tryLogin, setScreen, setRevealPassword } from '../../redux/actions';
 import * as C from '../../redux/constants';
 import { isLoginValid } from '../../VerifyCredentials';
+import UserList from './UserList';
 
 
 const LoginDialog = (props: Props) => {
@@ -59,6 +60,7 @@ const LoginDialog = (props: Props) => {
                 </span>
             </div>
         }
+        <UserList />
     </div>
 }
 
