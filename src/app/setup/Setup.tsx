@@ -7,8 +7,7 @@ import { Settings } from './State';
 import { renderInput, checkInput, allowsEmptyInput } from './Types';
 import { isValid, parseSettings, asSettings, parseUrl } from './State';
 import {
-  SettingsInfo, FIELDS_GENERAL, FIELDS_TIMING,
-  FIELDS_CREDENTIAL_SERVER, FIELDS_CREDENTIAL_LOCAL
+  SettingsInfo, FIELDS_CREDENTIAL_SERVER, FIELDS_CREDENTIAL_LOCAL
 } from './SettingInfos';
 
 const DEFAULT_SETTINGS = asSettings(DEFAULT_CONSTANTS);
@@ -53,13 +52,6 @@ class SetupView extends React.Component<Props, State> {
       Fields marked with a "{C.MARKER_CAN_BE_LEFT_EMPTY}" can be left empty to diable said feature.
 
       <button onClick={() => this.start(this.state.settings, true)}>Skip setup</button>
-
-      <h2>General settings</h2>
-      {this.renderSettings(FIELDS_GENERAL)}
-
-      <h2>Timing settings</h2>
-      All values below are measured in seconds. Negative values are not allowed.
-      {this.renderSettings(FIELDS_TIMING)}
 
       <h2>Credential settings</h2>
       These settings can be used to specify the credentials that a user can use to sucessfully "log in".

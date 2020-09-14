@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { ReduxState, ReduxConstants, DEFAULT_CONSTANTS } from './redux/store';
 import * as C from './redux/constants';
-import {initialSetup, } from './redux/actions';
+import { initialSetup, } from './redux/actions';
 import FullscreenManager from './FullscreenManager';
 import ScreenManager from './win10/ScreenManager';
 import ScreenCover from './ScreenCover';
@@ -13,44 +13,34 @@ import '../css/App.scss';
 // TODOs
 // --- Nice to have ---
 // Disable autofill on password fields (in Firefox)
-// Build my own clock, that does not create error messages in the console
+// --- Bugs ---
+// Not exiting fullscreen
 
-class App extends React.Component<Props, State> {
-  constructor(props: Props) {
-    super(props);
-    this.state = {};
-    (this as any).debugIsInitialized = false;
-  }
-
-  render() {
-    return <div className="app">
-      <PreloadImages />
-      <FullscreenManager alwaysShowContents={true}>
-        {this.renderContent()}
-      </FullscreenManager>
-    </div>
-  }
-
-  renderContent() {
-    if (C.DEBUG){
-      if (!(this as any).debugIsInitialized){
-        (this as any).debugIsInitialized = true;
-        initialSetup(DEFAULT_CONSTANTS);
-      }
-      return <ScreenManager />
-    } else {
-      if (this.props.showSetup) {
-        return <Setup constants={this.props.constants} />
-      } else {
-        let showKali = this.props.isRunning && this.props.isFullscreen;
-        return showKali ? <ScreenManager /> : <ScreenCover />;
-      }
+const App = (props: Props) => {
+  useEffect(() => {
+    if (C.DEBUG) {
+      initialSetup(DEFAULT_CONSTANTS);
     }
+  }, []);
+  
+  let contents;
+  if (C.DEBUG) {
+    contents = <ScreenManager />
+  } else if (props.showSetup) {
+    contents = <Setup constants={props.constants} />
+  } else {
+    let showKali = props.isRunning && props.isFullscreen;
+    contents = showKali ? <ScreenManager /> : <ScreenCover />;
   }
+
+  return <div className="app">
+    <PreloadImages />
+    <FullscreenManager alwaysShowContents={true}>
+      {contents}
+    </FullscreenManager>
+  </div>
 }
 
-interface State {
-}
 
 interface Props {
   isRunning: boolean,

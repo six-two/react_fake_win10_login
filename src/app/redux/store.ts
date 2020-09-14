@@ -38,7 +38,7 @@ export interface ReduxConstants {
 }
 
 export const DEFAULT_CONSTANTS: ReduxConstants = {
-  users: [{name: 'Test 123', iconUrl: 'https://i.ytimg.com/vi/B9gjMJ4rTJw/maxresdefault.jpg'}, {name: 'User', iconUrl: ''}],
+  users: [{name: 'User', iconUrl: ''}],
   //password stuff
   checkLoginCredentialsUrl: "http://localhost:3333/login.json?u=<username>&p=<password>",
   checkDecryptionPasswordUrl: "http://localhost:3333/disk.json?p=<password>",
