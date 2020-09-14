@@ -12,7 +12,7 @@ function renderMenuItem(item: MenuItem) {
         item.onClick && item.onClick();
     };
     return <div className="menu-item" onClick={onClick} key={item.name}>
-        <img className="icon" src={item.icon} alt="" />
+        {!!item.icon && <img className="icon" src={item.icon} alt="" />}
         <div className="name">{item.name}</div>
     </div>
 }

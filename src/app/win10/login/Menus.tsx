@@ -3,6 +3,7 @@ import { setScreen, setLoginOpenMenu } from '../../redux/actions';
 import * as C from '../../redux/constants';
 import MenuBarItem from '../../Menu';
 import SubMenu from './SubMenu';
+import AccessibilityMenu from './MenuAccessibility';
 import { iconAccessibility, iconInternet, iconKeyboard, iconPower, iconRestart, iconSleep } from '../../Images';
 
 
@@ -20,29 +21,31 @@ const powerMenuItems = [{
     onClick: () => alert('Reboot'),
 }];
 
-interface PlaceholderProps {
-    icon: string,
-}
+const keyboardMenuItems = [{
+    name: "English (International)",
+    icon: iconKeyboard,
+    onClick: () => { },
+}];
 
-function PlaceholderMenu(props: PlaceholderProps) {
-    return <MenuBarItem
-        name={"Doesnt matter"}
-        icon={props.icon}
-        selected={false}
-        onClick={(e) => setLoginOpenMenu(null)}
-        close={() => setLoginOpenMenu(null)}>
-
-        <div className="menu">
-            Not used
-        </div>
-    </MenuBarItem>
-}
+const todoMenuItems = [{
+    name: "TODO",
+    icon: "",
+    onClick: () => { },
+}];
 
 const MenuBar = () => {
     return <div className="menu-bar">
-        <PlaceholderMenu icon={iconKeyboard} />
-        <PlaceholderMenu icon={iconInternet} />
-        <PlaceholderMenu icon={iconAccessibility} />
+        <SubMenu
+            name="keyboard"
+            icon={iconKeyboard}
+            menuItems={keyboardMenuItems} />
+        <SubMenu
+            name="internet"
+            icon={iconInternet}
+            menuItems={todoMenuItems} />
+        <AccessibilityMenu
+            name="accessibility"
+            icon={iconAccessibility} />
         <SubMenu
             name="power"
             icon={iconPower}

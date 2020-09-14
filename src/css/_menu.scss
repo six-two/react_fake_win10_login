@@ -42,6 +42,7 @@ $menu-pad-y: 3px;
     border          : 1px solid #222;
     font-size       : 15px;
     color           : white;
+    cursor          : default;
 
     .menu-item {
         display: table-row;
@@ -50,14 +51,35 @@ $menu-pad-y: 3px;
             display: table-cell;
             width  : $button-size;
             height : $button-size;
-            padding: $menu-pad-y $menu-pad-x;
+            padding: $menu-pad-y 0px $menu-pad-y $menu-pad-x;
         }
 
         .name {
             display       : table-cell;
             vertical-align: middle;
-            padding       : $menu-pad-y $menu-pad-x $menu-pad-y 0px;
+            padding       : $menu-pad-y $menu-pad-x;
             white-space   : nowrap;
         }
+    }
+}
+
+.accessibility-menu {
+    padding: 15px;
+    width: 200px;
+    background-color: white;
+    cursor: default;
+
+    .switch-bar {
+        .title {
+            color: gray;
+        }
+
+        .state {
+            padding: 10px 0px;
+        }
+    }
+
+    .normal {
+        padding: 15px 0px;
     }
 }
