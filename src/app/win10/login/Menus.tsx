@@ -29,7 +29,7 @@ function PlaceholderMenu(icon: string) {
     return <MenuBarItem name={"Doesnt matter"} icon={icon}
         selected={false}
         onClick={(e) => setLoginOpenMenu(null)}
-        close={() => {}}>
+        close={() => setLoginOpenMenu(null)}>
 
         <div className="menu">
             Not used
@@ -75,9 +75,7 @@ class MenuBar extends React.Component<Props, State> {
             item.onClick && item.onClick();
         };
         return <div className="menu-item" onClick={onClick} key={item.name}>
-            <div className="icon">
-                <img src={item.icon} alt="" />
-            </div>
+            <img className="icon" src={item.icon} alt="" />
             <div className="name">{item.name}</div>
         </div>
     }
