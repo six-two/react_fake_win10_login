@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import * as C from '../redux/constants';
 import { ReduxState } from '../redux/store';
-import ScreenLogin from './ScreenLogin';
+import ScreenLogin from './login/ScreenLogin';
 import LockedScreen from './login/LockedScreen';
 import PasswordDialog from './login/PasswordDialog';
 import TurnedOffScreen from './TurnedOffScreen';
