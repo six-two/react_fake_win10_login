@@ -7,7 +7,7 @@ import iconAccessibility from '../img/menu-icons/accessibility.png';
 import iconBattery from '../img/menu-icons/battery.png';
 import iconInternet from '../img/menu-icons/internet.png';
 import iconKeyboard from '../img/menu-icons/keyboard.png';
-import iconPower from '../img/menu-icons/power.png';
+import iconPower from '../img/menu-icons/shutdown.png';
 import iconRestart from '../img/menu-icons/restart.png';
 import iconSleep from '../img/menu-icons/sleep.png';
 
