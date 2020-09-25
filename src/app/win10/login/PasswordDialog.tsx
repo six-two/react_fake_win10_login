@@ -5,6 +5,7 @@ import { ReduxState, SelectedUser } from '../../redux/store';
 import { setLoginPassword, tryLogin, setScreen, setRevealPassword } from '../../redux/actions';
 import * as C from '../../redux/constants';
 import { isLoginValid } from '../../VerifyCredentials';
+import { iconReveal, iconArrowRight } from '../../Images';
 import UserList from './UserList';
 import MenuBar from './Menus';
 
@@ -45,12 +46,12 @@ const LoginDialog = (props: Props) => {
                     {showRevealButton &&
                         <div className="button reveal" onMouseDown={showPassword}
                             onMouseUp={hidePassword} onMouseLeave={hidePassword}>
-                            <span role="img" aria-label="show">👁️</span>
+                            <img src={iconReveal} alt="" />
                         </div>
                     }
                 </div>
                 <div className="button login" onClick={doLogin}>
-                    <span role="img" aria-label="go">🡢</span>
+                    <img src={iconArrowRight} alt="" />
                 </div>
             </div>
         </KeyboardEventHandler>
