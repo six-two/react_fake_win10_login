@@ -14,6 +14,11 @@ Or even better: Leave you laptop open with this page and use the webcam to find 
    - With GitHub Pages: Just run `npm run deploy`
    - Other: Run `npm run build` and then upload the `public/` folder
 
+## Credential versification
+
+Credentials can be either checked in browser (via a regex) or can be sent to a remote server.
+If you want to use the remote server option, check out my [credential server example](https://github.com/six-two/fake_login_server_example).
+
 ---
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
