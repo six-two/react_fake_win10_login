@@ -1,4 +1,4 @@
-export const DEBUG = true;
+export const DEBUG = false;
 
 export const MARKER_CAN_BE_LEFT_EMPTY = "*";
 

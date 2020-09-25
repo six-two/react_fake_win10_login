@@ -1,7 +1,6 @@
 import React from 'react';
-import { setScreen, setLoginOpenMenu } from '../../redux/actions';
+import { setScreen } from '../../redux/actions';
 import * as C from '../../redux/constants';
-import MenuBarItem from '../../Menu';
 import SubMenu from './SubMenu';
 import AccessibilityMenu from './MenuAccessibility';
 import { iconAccessibility, iconInternet, iconKeyboard, iconPower, iconRestart, iconSleep } from '../../Images';
