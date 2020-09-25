@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "/react_fake_win10_login/static/css/main.e6518386.chunk.css",
-    "main.js": "/react_fake_win10_login/static/js/main.1547395f.chunk.js",
-    "main.js.map": "/react_fake_win10_login/static/js/main.1547395f.chunk.js.map",
+    "main.css": "/react_fake_win10_login/static/css/main.96a43204.chunk.css",
+    "main.js": "/react_fake_win10_login/static/js/main.05a413a7.chunk.js",
+    "main.js.map": "/react_fake_win10_login/static/js/main.05a413a7.chunk.js.map",
     "runtime-main.js": "/react_fake_win10_login/static/js/runtime-main.cb70a0b3.js",
     "runtime-main.js.map": "/react_fake_win10_login/static/js/runtime-main.cb70a0b3.js.map",
-    "static/js/2.bc12a3da.chunk.js": "/react_fake_win10_login/static/js/2.bc12a3da.chunk.js",
-    "static/js/2.bc12a3da.chunk.js.map": "/react_fake_win10_login/static/js/2.bc12a3da.chunk.js.map",
+    "static/js/2.845b2b20.chunk.js": "/react_fake_win10_login/static/js/2.845b2b20.chunk.js",
+    "static/js/2.845b2b20.chunk.js.map": "/react_fake_win10_login/static/js/2.845b2b20.chunk.js.map",
     "index.html": "/react_fake_win10_login/index.html",
-    "precache-manifest.b9fad9fb3e7e6199026e4c42ef0141b9.js": "/react_fake_win10_login/precache-manifest.b9fad9fb3e7e6199026e4c42ef0141b9.js",
+    "precache-manifest.c42d3ea58ab4b6801be38587c20bf6f1.js": "/react_fake_win10_login/precache-manifest.c42d3ea58ab4b6801be38587c20bf6f1.js",
     "service-worker.js": "/react_fake_win10_login/service-worker.js",
-    "static/css/main.e6518386.chunk.css.map": "/react_fake_win10_login/static/css/main.e6518386.chunk.css.map",
-    "static/js/2.bc12a3da.chunk.js.LICENSE.txt": "/react_fake_win10_login/static/js/2.bc12a3da.chunk.js.LICENSE.txt",
+    "static/css/main.96a43204.chunk.css.map": "/react_fake_win10_login/static/css/main.96a43204.chunk.css.map",
+    "static/js/2.845b2b20.chunk.js.LICENSE.txt": "/react_fake_win10_login/static/js/2.845b2b20.chunk.js.LICENSE.txt",
     "static/media/background.jpg": "/react_fake_win10_login/static/media/background.0099788b.jpg",
     "static/media/user.png": "/react_fake_win10_login/static/media/user.b34dc68a.png"
   },
   "entrypoints": [
     "static/js/runtime-main.cb70a0b3.js",
-    "static/js/2.bc12a3da.chunk.js",
-    "static/css/main.e6518386.chunk.css",
-    "static/js/main.1547395f.chunk.js"
+    "static/js/2.845b2b20.chunk.js",
+    "static/css/main.96a43204.chunk.css",
+    "static/js/main.05a413a7.chunk.js"
   ]
 }
