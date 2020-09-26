@@ -3,8 +3,8 @@ import * as C from './constants';
 import {
   ReduxState, ReduxVariables, ReduxConstants, FALLBACK_STATE, DEFAULT_VARIABLES
 } from './store';
-import loginReducer, {setLoginPassword} from './reducers/login';
-import {defaultUserIcon} from '../Images';
+import loginReducer, { setLoginPassword } from './reducers/login';
+import { defaultUserIcon } from '../Images';
 
 export function reducer(state: ReduxState | undefined, action: Actions.Action): ReduxState {
   if (!state) {
@@ -67,10 +67,21 @@ export function reducer(state: ReduxState | undefined, action: Actions.Action): 
       }
     }
     default: {
-      return {
+      state = {
         ...state,
         var: varReducer(state.var, action, state.const),
       };
+      if (action.type === C.TRY_LOGIN && state.var.isFinished) {
+        state = {
+          ...state,
+          fullscreen: {
+            ...state.fullscreen,
+            requested: false,
+          }
+        }
+      }
+
+      return state;
     }
   }
 }
