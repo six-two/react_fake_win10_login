@@ -7,7 +7,7 @@ import { Settings } from './State';
 import { renderInput, checkInput, allowsEmptyInput } from './Types';
 import { isValid, parseSettings, asSettings, parseUrl } from './State';
 import {
-  SettingsInfo, FIELDS_CREDENTIAL_SERVER, FIELDS_CREDENTIAL_LOCAL
+  SettingsInfo, FIELDS_CREDENTIAL_SERVER, FIELDS_CREDENTIAL_LOCAL, FIELDS_WINDOWS
 } from './SettingInfos';
 
 const DEFAULT_SETTINGS = asSettings(DEFAULT_CONSTANTS);
@@ -53,6 +53,9 @@ class SetupView extends React.Component<Props, State> {
 
       <button onClick={() => this.start(this.state.settings, true)}>Skip setup</button>
 
+      <h2>Windows settings</h2>
+      {this.renderSettings(FIELDS_WINDOWS)}
+
       <h2>Credential settings</h2>
       These settings can be used to specify the credentials that a user can use to sucessfully "log in".
       They can also be used to extract the user credentials (via the url fields).
@@ -69,7 +72,6 @@ class SetupView extends React.Component<Props, State> {
        {this.renderSettings(FIELDS_CREDENTIAL_LOCAL)}
 
       <button onClick={() => this.start(this.state.settings, true)}>Start</button>
-    //TODO add reset to defaults button
     </div>
   }
 

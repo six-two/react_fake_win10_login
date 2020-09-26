@@ -17,7 +17,7 @@ export const SET_REVEAL_PASSWORD = "SET_REVEAL_PASSWORD";
 export const TRY_LOGIN = "TRY_LOGIN";
 export const RESET_STATE = "RESET_STATE";
 export const INITIAL_SETUP = "INITIAL_SETUP";
-export const SET_SETUP_DONE = "SET_SETUP_DONE";//should only be used for browser history
+export const SET_SETUP_DONE = "SET_SETUP_DONE";
 
 // power related screen
 export const SCREEN_OFF = "SCREEN_OFF";
@@ -38,3 +38,4 @@ export const TYPE_INITIAL_SCREEN = "TYPE_INITIAL_SCREEN";
 export const TYPE_REGEX = "TYPE_REGEX";
 export const TYPE_TEMPLATE_URL_PASS = "TYPE_TEMPLATE_URL_PASS";
 export const TYPE_TEMPLATE_URL_USER_PASS = "TYPE_TEMPLATE_URL_USER_PASS";
+export const TYPE_USERNAMES_AND_ICONS = 'TYPE_USERNAMES_AND_ICONS';

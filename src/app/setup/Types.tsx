@@ -24,11 +24,18 @@ export function renderInput(type: string, defaultValue: string,
     case C.TYPE_TIMEOUT_OR_NULL:
     case C.TYPE_TEMPLATE_URL_PASS:
     case C.TYPE_TEMPLATE_URL_USER_PASS: {
-      let onChangeCallback = (e: React.ChangeEvent<HTMLInputElement>) => {
-        onValueChange(e.target.value);
-      }
-      return <input value={value} onChange={onChangeCallback}
+      return <input
+        value={value}
+        onChange={e => onValueChange(e.target.value)}
         placeholder={defaultValue} />
+    }
+    case C.TYPE_USERNAMES_AND_ICONS: {
+      return <textarea
+        value={value}
+        onChange={e => onValueChange(e.target.value)}
+        placeholder={defaultValue}
+        cols={50}
+        rows={5} />
     }
     default:
       console.error(`Unknown type: "${type}"`)
@@ -63,9 +70,26 @@ export function checkInput(type: string, value: string): string | null {
     case C.TYPE_REGEX: {
       return checkRegex(value);
     }
+    case C.TYPE_USERNAMES_AND_ICONS:
+      return checkUserList(value);
     default:
       console.error(`Unknown type: "${type}"`)
       return "Internal error: unknown type";
+  }
+}
+
+function checkUserList(value: string): string | null {
+  value = value.trimEnd(); // remove trailing \n
+  if (value) {
+    for (const line of value.split('\n')) {
+      // console.log(`line: "${line}"`);
+      if (!line) {
+        return 'This field contains an empty line';
+      }
+    }
+    return null;
+  } else {
+    return 'You need to specify at least one user';
   }
 }
 

@@ -1,8 +1,9 @@
-import { ReduxConstants, DEFAULT_CONSTANTS } from '../redux/store';
+import { ReduxConstants, DEFAULT_CONSTANTS, UserInfo } from '../redux/store';
 import { SETTINGS_MAP } from './SettingInfos';
 import { checkInput } from './Types';
 
 export interface Settings {
+  userNamesAndIcons: string,
   // server verification
   checkLoginCredentialsUrl: string,
   checkDecryptionPasswordUrl: string,
@@ -17,6 +18,7 @@ export interface Settings {
 
 export function asSettings(constants: ReduxConstants): Settings {
   return {
+    userNamesAndIcons: fromUserList(constants.users),
     // server verification
     checkLoginCredentialsUrl: fromStringOrNull(constants.checkLoginCredentialsUrl),
     checkDecryptionPasswordUrl: fromStringOrNull(constants.checkDecryptionPasswordUrl),
@@ -26,6 +28,18 @@ export function asSettings(constants: ReduxConstants): Settings {
     validLoginPasswordRegex: fromRegex(constants.validLoginPasswordRegex),
     validDecryptionPasswordRegex: fromRegex(constants.validDecryptionPasswordRegex),
   };
+}
+
+function fromUserList(userList: UserInfo[]): string {
+  let asString = '';
+  for (const user of userList) {
+    if (user.iconUrl) {
+      asString += `${user.name}|${user.iconUrl}\n`;
+    } else {
+      asString += `${user.name}\n`;
+    }
+  }
+  return asString;
 }
 
 function fromNumber(value: number): string {
@@ -63,11 +77,27 @@ export function isValid(settings: Settings): boolean {
 
 export function parseSettings(settings: Settings): ReduxConstants {
   let constants = { ...DEFAULT_CONSTANTS };
+  constants.users = parseUserList(settings.userNamesAndIcons);
   //credentials
   constants.checkDecryptionPasswordUrl = stringOrNull(settings.checkDecryptionPasswordUrl);
   constants.checkLoginCredentialsUrl = stringOrNull(settings.checkLoginCredentialsUrl);
   constants.serverRequestTimeout = Number(settings.serverRequestTimeout);
   return constants;
+}
+
+function parseUserList(value: string): UserInfo[] {
+  const users = [];
+  const lines = value.trimEnd().split('\n');
+
+  for (const line of lines) {
+    let url = '';
+    const fields = line.split('|', 2);
+    if (fields.length === 2) {
+      url = fields[1];
+    }
+    users.push({ name: fields[0], iconUrl: url });
+  }
+  return users;
 }
 
 function stringOrNull(value: string): string | null {
