@@ -11,7 +11,6 @@ import { PreloadImages } from './Images';
 import '../css/App.scss';
 
 // TODOs
-// Add user names and icons to setup page
 // --- Nice to have ---
 // add reset to defaults button for settings
 // Disable autofill on password fields (in Firefox)

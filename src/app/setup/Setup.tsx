@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { ReduxConstants, DEFAULT_CONSTANTS } from '../redux/store';
+import React, { useState, useEffect, useMemo } from 'react';
+import { ReduxConstants } from '../redux/store';
 import { initialSetup } from '../redux/actions';
 import * as C from '../redux/constants';
 import RenderSettingInfos from './RenderSettingInfos';
-import { Settings } from './State';
 import { isValid, parseSettings, asSettings, parseUrl } from './State';
 import {
   SettingsInfo, FIELDS_CREDENTIAL_SERVER, FIELDS_CREDENTIAL_LOCAL, FIELDS_WINDOWS
@@ -11,15 +10,16 @@ import {
 
 
 export default function SetupView(props: Props) {
-  const [values, setValues] = useState(asSettings(props.constants));
+  const initialValues = useMemo(() => asSettings(props.constants), [props.constants]);
+  const [values, setValues] = useState(initialValues);
 
   useEffect(
     () => {
-      let parsed = parseUrl(values);
+      let parsed = parseUrl(initialValues);
       if (parsed) {
         setValues(parsed.settings);
       }
-    }, []
+    }, [initialValues]
   );
 
   function renderSettings(list: SettingsInfo[]) {
