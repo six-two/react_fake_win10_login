@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/react_fake_win10_login/static/css/main.96a43204.chunk.css",
-    "main.js": "/react_fake_win10_login/static/js/main.09b9e56c.chunk.js",
-    "main.js.map": "/react_fake_win10_login/static/js/main.09b9e56c.chunk.js.map",
+    "main.js": "/react_fake_win10_login/static/js/main.ca0faf1e.chunk.js",
+    "main.js.map": "/react_fake_win10_login/static/js/main.ca0faf1e.chunk.js.map",
     "runtime-main.js": "/react_fake_win10_login/static/js/runtime-main.cb70a0b3.js",
     "runtime-main.js.map": "/react_fake_win10_login/static/js/runtime-main.cb70a0b3.js.map",
     "static/js/2.deae91fe.chunk.js": "/react_fake_win10_login/static/js/2.deae91fe.chunk.js",
     "static/js/2.deae91fe.chunk.js.map": "/react_fake_win10_login/static/js/2.deae91fe.chunk.js.map",
     "index.html": "/react_fake_win10_login/index.html",
-    "precache-manifest.e0bb2cc2d18d0971a9fc0a7ac54167b7.js": "/react_fake_win10_login/precache-manifest.e0bb2cc2d18d0971a9fc0a7ac54167b7.js",
+    "precache-manifest.eb96ebf4d4ba219014db15cc501fead5.js": "/react_fake_win10_login/precache-manifest.eb96ebf4d4ba219014db15cc501fead5.js",
     "service-worker.js": "/react_fake_win10_login/service-worker.js",
     "static/css/main.96a43204.chunk.css.map": "/react_fake_win10_login/static/css/main.96a43204.chunk.css.map",
     "static/js/2.deae91fe.chunk.js.LICENSE.txt": "/react_fake_win10_login/static/js/2.deae91fe.chunk.js.LICENSE.txt",
@@ -19,6 +19,6 @@
     "static/js/runtime-main.cb70a0b3.js",
     "static/js/2.deae91fe.chunk.js",
     "static/css/main.96a43204.chunk.css",
-    "static/js/main.09b9e56c.chunk.js"
+    "static/js/main.ca0faf1e.chunk.js"
   ]
 }
