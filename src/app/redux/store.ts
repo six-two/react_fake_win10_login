@@ -23,6 +23,7 @@ export interface UserInfo {
 export interface ReduxConstants {
   users: UserInfo[],
   initialScreen: string,
+  bgImgUrl: string | null,
   // urls for logging / checking credentials
   checkLoginCredentialsUrl: string | null,
   checkDecryptionPasswordUrl: string | null,
@@ -39,6 +40,7 @@ export interface ReduxConstants {
 
 export const DEFAULT_CONSTANTS: ReduxConstants = {
   users: [{name: 'User', iconUrl: ''}],
+  bgImgUrl: null,
   //password stuff
   checkLoginCredentialsUrl: "http://localhost:3333/login.json?u=<username>&p=<password>",
   checkDecryptionPasswordUrl: "http://localhost:3333/disk.json?p=<password>",

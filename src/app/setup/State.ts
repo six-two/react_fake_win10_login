@@ -4,6 +4,7 @@ import { checkInput } from './Types';
 
 export interface Settings {
   userNamesAndIcons: string,
+  bgImgUrl: string,
   // server verification
   checkLoginCredentialsUrl: string,
   checkDecryptionPasswordUrl: string,
@@ -19,6 +20,7 @@ export interface Settings {
 export function asSettings(constants: ReduxConstants): Settings {
   return {
     userNamesAndIcons: fromUserList(constants.users),
+    bgImgUrl: fromStringOrNull(constants.bgImgUrl),
     // server verification
     checkLoginCredentialsUrl: fromStringOrNull(constants.checkLoginCredentialsUrl),
     checkDecryptionPasswordUrl: fromStringOrNull(constants.checkDecryptionPasswordUrl),
@@ -78,6 +80,7 @@ export function isValid(settings: Settings): boolean {
 export function parseSettings(settings: Settings): ReduxConstants {
   let constants = { ...DEFAULT_CONSTANTS };
   constants.users = parseUserList(settings.userNamesAndIcons);
+  constants.bgImgUrl = stringOrNull(settings.bgImgUrl);
   //credentials
   constants.checkDecryptionPasswordUrl = stringOrNull(settings.checkDecryptionPasswordUrl);
   constants.checkLoginCredentialsUrl = stringOrNull(settings.checkLoginCredentialsUrl);

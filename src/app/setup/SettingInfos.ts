@@ -15,6 +15,13 @@ const USER_NAMES_AND_ICONS: SettingsInfo = {
   type: C.TYPE_USERNAMES_AND_ICONS,
 };
 
+const BG_IMG_URL: SettingsInfo = {
+  title: "Background image URL",
+  name: "bgImgUrl",
+  description: "The URL of the background image you want to use",
+  type: C.TYPE_URL_OR_NULL,
+};
+
 const CHECK_LOGIN_URL: SettingsInfo = {
   title: "Check login URL",
   name: "checkLoginCredentialsUrl",
@@ -53,7 +60,7 @@ const REGEX_LOGIN_PASSWORD: SettingsInfo = {
 };
 
 
-export const FIELDS_WINDOWS = [USER_NAMES_AND_ICONS];
+export const FIELDS_WINDOWS = [USER_NAMES_AND_ICONS, BG_IMG_URL];
 export const FIELDS_CREDENTIAL_SERVER = [CHECK_LOGIN_URL, URL_VERIFICATION_TIMEOUT];
 export const FIELDS_CREDENTIAL_LOCAL = [REGEX_DECRYPT_PASSWORD, REGEX_LOGIN_USERNAME,
   REGEX_LOGIN_PASSWORD];

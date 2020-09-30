@@ -8,7 +8,7 @@ import { imageBackground } from '../../Images';
 class ScreenLogin extends React.Component<Props> {
   render() {
     return <div className="screen-login">
-      <img className="fill-screen" src={imageBackground} alt=""></img>
+      <img className="fill-screen" src={this.props.bgImgUrl} alt="" />
       <div className="fill-screen v-flex" onClick={this.closeMenu}>
         <div className="expand"></div>
         {this.props.children}
@@ -26,6 +26,7 @@ class ScreenLogin extends React.Component<Props> {
 
 interface Props {
   isMenuOpen: boolean,
+  bgImgUrl: string,
   buttons: any[],
 }
 
@@ -33,6 +34,7 @@ const mapStateToProps = (state: ReduxState, ownProps: any) => {
   return {
     ...ownProps,
     isMenuOpen: state.var.login.openMenu !== null,
+    bgImgUrl: state.const.bgImgUrl || imageBackground,
   };
 };
 

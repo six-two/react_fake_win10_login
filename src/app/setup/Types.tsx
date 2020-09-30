@@ -8,7 +8,8 @@ export interface RenderInputProps {
 
 export function allowsEmptyInput(type: string): boolean {
   if (type === C.TYPE_STRING_OR_NULL || type === C.TYPE_TIMEOUT_OR_NULL
-    || type === C.TYPE_TEMPLATE_URL_PASS || type === C.TYPE_TEMPLATE_URL_USER_PASS) {
+    || type === C.TYPE_TEMPLATE_URL_PASS || type === C.TYPE_TEMPLATE_URL_USER_PASS
+    || type === C.TYPE_URL_OR_NULL) {
     return true;
   }
   return false;
@@ -22,6 +23,8 @@ export function renderInput(type: string, defaultValue: string,
     case C.TYPE_STRING_OR_NULL:
     case C.TYPE_TIMEOUT:
     case C.TYPE_TIMEOUT_OR_NULL:
+    case C.TYPE_URL:
+    case C.TYPE_URL_OR_NULL:
     case C.TYPE_TEMPLATE_URL_PASS:
     case C.TYPE_TEMPLATE_URL_USER_PASS: {
       return <input
@@ -56,9 +59,17 @@ export function checkInput(type: string, value: string): string | null {
     case C.TYPE_TIMEOUT: {
       if (type === C.TYPE_TIMEOUT_OR_NULL && !value) {
         return null;
+      } else {
+        return checkTimingStringForErrors(value);
       }
-      return checkTimingStringForErrors(value);
     }
+    case C.TYPE_URL:
+    case C.TYPE_URL_OR_NULL:
+      if (type === C.TYPE_URL_OR_NULL && !value) {
+        return null;
+      } else {
+        return checkUrlForPlaceholders(value, []);
+      }
     case C.TYPE_TEMPLATE_URL_PASS:
     case C.TYPE_TEMPLATE_URL_USER_PASS: {
       let placeholders = [C.PLACEHOLDER_PASSWORD];
