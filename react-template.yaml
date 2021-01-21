@@ -1,7 +1,11 @@
-title: Win10 Login
+title: Windows 10 Login
 description: A small web app that emulates the login screen of Windows 10
 menu:
   - title: Source code
     url: "https://github.com/six-two/react_fake_win10_login"
+    id: page-nav-source
   - title: My other projects
     url: "https://projects.six-two.dev/"
+    id: page-nav-projects
+pre_build:
+  - template-tools/defaults.py <PROJECT>
